@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brainlab – Допомога з курсових, дипломних та магістерських робіт</title>
-    <meta name="description" content="Brainlab – професійна допомога студентам. Курсові, дипломні, магістерські роботи на замовлення. Швидко, якісно, анонімно.">
     
+    <title>Brainlab – Курсові, дипломні та магістерські роботи на замовлення</title>
+    <meta name="description" content="Brainlab – професійна допомога студентам в Україні. Написання курсових, дипломних, магістерських робіт, звітів з практики. Якісно, швидко, анонімно.">
+    <meta name="keywords" content="курсова на замовлення, купити дипломну, замовити магістерську, допомога студентам, реферати, лабораторні роботи, написання робіт київ">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Brainlab">
+
+    <meta property="og:title" content="Brainlab – Допомога з навчанням">
+    <meta property="og:description" content="Забудь про безсонні ночі. Замовляй курсові та дипломні у професіоналів.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://t.me/brain_lab1"> <meta property="og:image" content="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -68,10 +75,6 @@
             padding: 80px 0;
         }
 
-        .text-center {
-            text-align: center;
-        }
-
         /* --- Кнопки --- */
         .btn {
             display: inline-block;
@@ -84,6 +87,7 @@
             transition: var(--transition);
             border: none;
             font-family: 'Montserrat', sans-serif;
+            text-align: center;
         }
 
         .btn-primary {
@@ -193,7 +197,6 @@
             overflow: hidden;
         }
 
-        /* Анімовані частинки (простий ефект) */
         .hero::before {
             content: '';
             position: absolute;
@@ -224,7 +227,6 @@
             color: var(--accent-color);
         }
 
-        /* Пульсація кнопки */
         .pulse-btn {
             animation: pulse 2s infinite;
         }
@@ -235,7 +237,7 @@
             100% { box-shadow: 0 0 0 0 rgba(0, 204, 102, 0); }
         }
 
-        /* --- Заголовки розділів --- */
+        /* --- Розділи --- */
         .section-title {
             text-align: center;
             margin-bottom: 60px;
@@ -522,7 +524,7 @@
 
         @media (max-width: 768px) {
             .nav-links {
-                position: absolute;
+                position: fixed;
                 right: 0px;
                 height: 100vh;
                 top: 0;
@@ -533,6 +535,7 @@
                 width: 70%;
                 transform: translateX(100%);
                 transition: transform 0.4s ease-in;
+                z-index: 1002;
             }
 
             .nav-links.nav-active {
@@ -541,7 +544,8 @@
 
             .hamburger {
                 display: block;
-                z-index: 1001;
+                z-index: 1003;
+                position: relative;
             }
             
             .hero h1 {
@@ -583,10 +587,10 @@
             <h1>Швидка та якісна допомога з <span class="highlight">курсових та дипломних</span> робіт</h1>
             <p>Забудь про безсонні ночі. Ми – команда експертів, яка гарантує тобі високу оцінку та вільний час. Твій успіх — наша робота.</p>
             <div class="hero-btns">
-                <a href="https://t.me/brain_lab1" class="btn btn-primary pulse-btn" target="_blank">
-                    <i class="fa-brands fa-telegram"></i> Замовити роботу
+                <a href="#contact" class="btn btn-primary pulse-btn">
+                    <i class="fa-brands fa-telegram"></i> Оформити замовлення
                 </a>
-                <a href="#services" class="btn btn-outline" style="margin-left: 15px;">Дізнатись більше</a>
+                <a href="#services" class="btn btn-outline" style="margin-left: 15px;">Послуги</a>
             </div>
         </div>
     </section>
@@ -735,24 +739,32 @@
             <div class="cta-container" data-aos="flip-up">
                 <div class="cta-text">
                     <div class="discount-badge">Останній шанс отримати знижку!</div>
-                    <h2>Не витрачай час – замов успіх у Brainlab!</h2>
-                    <p>Залиште заявку зараз, і ми зв'яжемося з вами протягом 15 хвилин для оцінки вартості роботи.</p>
-                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">* Заповнення форми ні до чого вас не зобов'язує.</p>
+                    <h2>Готовий звільнити час для життя?</h2>
+                    <p>Заповніть форму, і дані автоматично сформуються у повідомлення Telegram. Вам залишиться тільки натиснути кнопку відправки!</p>
+                    <ul style="margin-top: 15px; list-style: none;">
+                        <li>✅ Миттєва відповідь менеджера</li>
+                        <li>✅ Безкоштовна оцінка роботи</li>
+                        <li>✅ Повна анонімність</li>
+                    </ul>
                 </div>
                 <div class="cta-form">
                     <form class="order-form" id="orderForm">
-                        <input type="text" placeholder="Ваше ім'я" required>
-                        <input type="email" placeholder="Ваш Email або Telegram" required>
-                        <select>
-                            <option value="" disabled selected>Тип роботи</option>
-                            <option value="course">Курсова робота</option>
-                            <option value="diploma">Дипломна робота</option>
-                            <option value="lab">Лабораторна</option>
-                            <option value="master">Магістерська</option>
-                            <option value="other">Інше</option>
+                        <input type="text" id="clientName" placeholder="Як до вас звертатися?" required>
+                        <input type="text" id="clientContact" placeholder="Ваш номер або нік Telegram" required>
+                        <select id="workType" required>
+                            <option value="" disabled selected>Виберіть тип роботи</option>
+                            <option value="Курсова робота">Курсова робота</option>
+                            <option value="Дипломна робота">Дипломна робота</option>
+                            <option value="Лабораторна">Лабораторна робота</option>
+                            <option value="Магістерська">Магістерська дисертація</option>
+                            <option value="Звіт з практики">Звіт з практики</option>
+                            <option value="Інше">Інше</option>
                         </select>
-                        <textarea rows="3" placeholder="Тема або короткий опис завдання"></textarea>
-                        <button type="submit" class="btn btn-primary pulse-btn">Розрахувати вартість</button>
+                        <textarea id="workTopic" rows="3" placeholder="Тема, предмет або деталі замовлення" required></textarea>
+                        
+                        <button type="submit" class="btn btn-primary pulse-btn">
+                            <i class="fa-brands fa-telegram"></i> Надіслати запит в Telegram
+                        </button>
                     </form>
                     <div style="text-align: center; margin-top: 15px;">
                         <span style="opacity: 0.8">або пишіть напряму:</span><br>
@@ -775,7 +787,7 @@
                 <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
             </div>
             <div class="copyright">
-                &copy; 2023 Brainlab. Всі права захищено.
+                &copy; 2026 Brainlab. Всі права захищено.
             </div>
         </div>
     </footer>
@@ -784,9 +796,9 @@
     <script>
         // Ініціалізація анімацій
         AOS.init({
-            once: true, // анімація програється лише один раз
-            offset: 100, // зміщення початку анімації
-            duration: 800, // тривалість
+            once: true, 
+            offset: 100, 
+            duration: 800, 
         });
 
         // Мобільне меню
@@ -796,15 +808,13 @@
 
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('nav-active');
-            
-            // Анімація бургер-іконки (зміна на хрестик - опціонально)
             hamburger.classList.toggle('toggle');
         });
 
-        // Закриття меню при кліку на посилання
         links.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
             });
         });
 
@@ -820,20 +830,30 @@
             }
         });
 
-        // Обробка форми (демонстрація)
+        // --- ЛОГІКА ВІДПРАВКИ ФОРМИ В TELEGRAM ---
         document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Тут мав би бути код відправки на сервер
-            // Для демо показуємо алерт і перенаправляємо в ТГ
-            
-            const confirmAction = confirm("Дякуємо за заявку! Наш менеджер зв'яжеться з вами. Хочете перейти в Telegram для швидшого зв'язку?");
-            
-            if (confirmAction) {
-                window.open("https://t.me/brain_lab1", "_blank");
-            }
-            
-            this.reset();
+            e.preventDefault(); // Зупиняємо стандартну відправку форми
+
+            // 1. Отримуємо дані з полів
+            const name = document.getElementById('clientName').value;
+            const contact = document.getElementById('clientContact').value;
+            const type = document.getElementById('workType').value;
+            const topic = document.getElementById('workTopic').value;
+
+            // 2. Формуємо красиве повідомлення
+            // %0A - це код нового рядка для URL
+            const text = `👋 Вітаю! Хочу замовити роботу.%0A%0A` +
+                         `👤 *Ім'я:* ${name}%0A` +
+                         `📞 *Контакт:* ${contact}%0A` +
+                         `📚 *Тип роботи:* ${type}%0A` +
+                         `📝 *Тема/Деталі:* ${topic}`;
+
+            // 3. Формуємо посилання на Telegram
+            // Використовуємо t.me з параметром ?text=
+            const telegramUrl = `https://t.me/brain_lab1?text=${text}`;
+
+            // 4. Відкриваємо Telegram у новій вкладці
+            window.open(telegramUrl, '_blank');
         });
     </script>
 </body>
