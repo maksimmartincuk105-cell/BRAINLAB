@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainlab – Допомога з курсових, дипломних та магістерських робіт</title>
+    <meta name="description" content="Brainlab – професійна допомога студентам. Курсові, дипломні, магістерські роботи на замовлення. Швидко, якісно, анонімно.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- Змінні та Глобальні Стилі --- */
+        :root {
+            --primary-color: #003366; /* Темно-синій */
+            --accent-color: #00CC66;  /* Зелений */
+            --accent-hover: #00994d;
+            --text-dark: #333333;
+            --text-light: #f4f4f4;
+            --bg-light: #ffffff;
+            --bg-off-white: #f9f9f9;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Кнопки --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 204, 102, 0.6);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* --- Навігація --- */
+        header {
+            background-color: rgba(0, 51, 102, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Анімовані частинки (простий ефект) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, #003366 120%);
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+        }
+
+        /* Пульсація кнопки */
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 204, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 204, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 204, 102, 0); }
+        }
+
+        /* --- Заголовки розділів --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Про Нас --- */
+        .about {
+            background-color: var(--bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- Послуги --- */
+        .services {
+            background-color: var(--bg-off-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .price-tag {
+            display: inline-block;
+            background-color: rgba(0, 204, 102, 0.1);
+            color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        /* --- Переваги --- */
+        .benefits {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .benefits .section-title h2 {
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-item {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .benefit-item:hover .benefit-icon {
+            background-color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* --- Відгуки --- */
+        .testimonials {
+            background-color: var(--bg-light);
+        }
+
+        .reviews-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .review-card i {
+            color: var(--accent-color);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .telegram-btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-telegram {
+            background-color: #0088cc;
+            color: white;
+        }
+        
+        .btn-telegram:hover {
+            background-color: #0077b5;
+            color: white;
+        }
+
+        /* --- CTA та Форма --- */
+        .cta-section {
+            background-color: var(--bg-off-white);
+        }
+
+        .cta-container {
+            background: linear-gradient(135deg, var(--primary-color), #004d99);
+            border-radius: 20px;
+            padding: 60px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0, 51, 102, 0.3);
+        }
+
+        .cta-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #333;
+            font-weight: 800;
+            padding: 5px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transform: rotate(-2deg);
+        }
+
+        .order-form input, .order-form textarea, .order-form select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .order-form button {
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #002244;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-socials {
+            margin: 20px 0;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            background: var(--accent-color);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 992px) {
+            .about-grid, .cta-container {
+                grid-template-columns: 1fr;
+            }
+            .about-img {
+                order: -1;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 100vh;
+                top: 0;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.4s ease-in;
+            }
+
+            .nav-links.nav-active {
+                transform: translateX(0%);
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-brain"></i> BRAINLAB
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Головна</a></li>
+                    <li><a href="#about">Про нас</a></li>
+                    <li><a href="#services">Послуги</a></li>
+                    <li><a href="#benefits">Переваги</a></li>
+                    <li><a href="#reviews">Відгуки</a></li>
+                    <li><a href="#contact" class="btn btn-primary" style="padding: 8px 20px; margin-top: -8px;">Замовити</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="discount-badge">🔥 Акція: -10% на перше замовлення!</div>
+            <h1>Швидка та якісна допомога з <span class="highlight">курсових та дипломних</span> робіт</h1>
+            <p>Забудь про безсонні ночі. Ми – команда експертів, яка гарантує тобі високу оцінку та вільний час. Твій успіх — наша робота.</p>
+            <div class="hero-btns">
+                <a href="https://t.me/brain_lab1" class="btn btn-primary pulse-btn" target="_blank">
+                    <i class="fa-brands fa-telegram"></i> Замовити роботу
+                </a>
+                <a href="#services" class="btn btn-outline" style="margin-left: 15px;">Дізнатись більше</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text" data-aos="fade-right">
+                    <div class="section-title" style="text-align: left; margin-bottom: 30px;">
+                        <h2>Хто ми такі?</h2>
+                    </div>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem;">
+                        <strong>Ми – Brainlab.</strong> Команда професійних авторів, викладачів та науковців, яка об'єдналася, щоб допомогти студентам подолати академічні виклики.
+                    </p>
+                    <p>
+                        Ми розуміємо, як важко поєднувати навчання, роботу та особисте життя. Наша місія — взяти на себе рутину написання курсових, лабораторних та дипломних робіт, щоб ви могли зосередитися на тому, що дійсно важливо.
+                    </p>
+                    <ul style="margin-top: 20px;">
+                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-check-circle" style="color: var(--accent-color);"></i> Експерти з 15+ галузей знань</li>
+                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-check-circle" style="color: var(--accent-color);"></i> Понад 1000 задоволених клієнтів</li>
+                        <li><i class="fa-solid fa-check-circle" style="color: var(--accent-color);"></i> Підтримка 24/7 до самого захисту</li>
+                    </ul>
+                </div>
+                <div class="about-img" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Команда Brainlab за роботою">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding services">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Наші Послуги</h2>
+                <p>Ми виконуємо роботи будь-якої складності</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>Курсові роботи</h3>
+                    <p>Глибокий аналіз, актуальні джерела та правильне оформлення згідно з методичкою.</p>
+                    <span class="price-tag">від 600 грн</span>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
+                    <h3>Лабораторні звіти</h3>
+                    <p>Точні розрахунки, графіки та висновки. Для технічних та гуманітарних спеціальностей.</p>
+                    <span class="price-tag">від 200 грн</span>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Дипломні роботи</h3>
+                    <p>Повний супровід: від плану до захисту. Унікальність та наукова новизна гарантовані.</p>
+                    <span class="price-tag">від 4000 грн</span>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon"><i class="fa-solid fa-scroll"></i></div>
+                    <h3>Магістерські дисертації</h3>
+                    <p>Серйозні наукові дослідження для отримання ступеня магістра. Високий рівень унікальності.</p>
+                    <span class="price-tag">від 6000 грн</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section-padding benefits">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Чому обирають Brainlab?</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="benefit-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Швидкість</h3>
+                    <p>Виконуємо термінові замовлення "на вчора". Дотримання дедлайнів — наш пріоритет.</p>
+                </div>
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="benefit-icon"><i class="fa-solid fa-star"></i></div>
+                    <h3>Якість</h3>
+                    <p>Роботи пишуть профі. Без води, без GPT (якщо не просите), тільки перевірені факти.</p>
+                </div>
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="benefit-icon"><i class="fa-solid fa-user-secret"></i></div>
+                    <h3>Конфіденційність</h3>
+                    <p>Ваші дані під надійним захистом. Ніхто не дізнається про наше співробітництво.</p>
+                </div>
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Унікальність</h3>
+                    <p>Перевірка на Antiplagiat/Unicheck. Гарантуємо проходження контролю в університеті.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section-padding testimonials">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Що кажуть студенти</h2>
+            </div>
+            <div class="reviews-wrapper">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Дуже врятували з курсовою по економіці! Викладач був в шоці (в хорошому сенсі). Здала на 95 балів без правок. Рекомендую!</p>
+                    <div class="client-info">
+                        <div class="client-avatar">O</div>
+                        <div>
+                            <h4>Олена К.</h4>
+                            <small>КНУ ім. Шевченка</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Замовляв дипломну роботу. Дуже переживав за антиплагіат, але все пройшло гладко. Унікальність 85%. Дякую менеджеру за зв'язок 24/7.</p>
+                    <div class="client-info">
+                        <div class="client-avatar">М</div>
+                        <div>
+                            <h4>Максим В.</h4>
+                            <small>Львівська Політехніка</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Потрібно було зробити 5 лаб за ніч. Хлопці впоралися! Ціна адекватна, якість супер. Brainlab — ви топ!</p>
+                    <div class="client-info">
+                        <div class="client-avatar">А</div>
+                        <div>
+                            <h4>Андрій П.</h4>
+                            <small>ХНУРЕ</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="telegram-btn-container" data-aos="fade-up">
+                <a href="https://t.me/brainlab_2" target="_blank" class="btn btn-telegram">
+                    <i class="fa-brands fa-telegram"></i> Переглянути всі відгуки в Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding cta-section">
+        <div class="container">
+            <div class="cta-container" data-aos="flip-up">
+                <div class="cta-text">
+                    <div class="discount-badge">Останній шанс отримати знижку!</div>
+                    <h2>Не витрачай час – замов успіх у Brainlab!</h2>
+                    <p>Залиште заявку зараз, і ми зв'яжемося з вами протягом 15 хвилин для оцінки вартості роботи.</p>
+                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">* Заповнення форми ні до чого вас не зобов'язує.</p>
+                </div>
+                <div class="cta-form">
+                    <form class="order-form" id="orderForm">
+                        <input type="text" placeholder="Ваше ім'я" required>
+                        <input type="email" placeholder="Ваш Email або Telegram" required>
+                        <select>
+                            <option value="" disabled selected>Тип роботи</option>
+                            <option value="course">Курсова робота</option>
+                            <option value="diploma">Дипломна робота</option>
+                            <option value="lab">Лабораторна</option>
+                            <option value="master">Магістерська</option>
+                            <option value="other">Інше</option>
+                        </select>
+                        <textarea rows="3" placeholder="Тема або короткий опис завдання"></textarea>
+                        <button type="submit" class="btn btn-primary pulse-btn">Розрахувати вартість</button>
+                    </form>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <span style="opacity: 0.8">або пишіть напряму:</span><br>
+                        <a href="https://t.me/brain_lab1" target="_blank" style="color: var(--accent-color); font-weight: bold; text-decoration: underline;">@brain_lab1</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <i class="fa-solid fa-brain"></i> BRAINLAB
+            </a>
+            <p>Ваш надійний партнер у навчанні.</p>
+            <div class="footer-socials">
+                <a href="https://t.me/brain_lab1" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Brainlab. Всі права захищено.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Ініціалізація анімацій
+        AOS.init({
+            once: true, // анімація програється лише один раз
+            offset: 100, // зміщення початку анімації
+            duration: 800, // тривалість
+        });
+
+        // Мобільне меню
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            
+            // Анімація бургер-іконки (зміна на хрестик - опціонально)
+            hamburger.classList.toggle('toggle');
+        });
+
+        // Закриття меню при кліку на посилання
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+            });
+        });
+
+        // Зміна фону хедера при скролі
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(0, 51, 102, 1)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.backgroundColor = 'rgba(0, 51, 102, 0.95)';
+                header.style.padding = '15px 0';
+            }
+        });
+
+        // Обробка форми (демонстрація)
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Тут мав би бути код відправки на сервер
+            // Для демо показуємо алерт і перенаправляємо в ТГ
+            
+            const confirmAction = confirm("Дякуємо за заявку! Наш менеджер зв'яжеться з вами. Хочете перейти в Telegram для швидшого зв'язку?");
+            
+            if (confirmAction) {
+                window.open("https://t.me/brain_lab1", "_blank");
+            }
+            
+            this.reset();
+        });
+    </script>
+</body>
+</html>
