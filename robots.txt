@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maksimmartincuk105-cell.github.io/BRAINLAB/sitemap.xml
